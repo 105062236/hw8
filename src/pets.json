@@ -37,6 +37,13 @@
     "age": 2,
     "breed": "French Bulldog",
     "location": "Gerber, South Dakota"
+  },
+  {
+    "id": 4,
+    "name": "Jeanie",
+    "age": 2,
+    "breed": "French Bulldog",
+    "location": "Gerber, South Dakota"
   }
 ]
   
