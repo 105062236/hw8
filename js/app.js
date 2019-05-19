@@ -1,24 +1,38 @@
+function pet(name, picture, breed, age, location, id) {
+  this.id = id;
+  this.picture = picture;
+  this.name = name;
+  this.breed = breed;
+  this.age = age;
+  this.location = location;
+}
+var pets = [
+  new pet("Frieda","images/scottish-terrier.jpeg","Scottish Terrier",3, "Lisco, Alabama", 0),
+  new pet("Gina","images/french-bulldog.jpeg","French Bulldog",3, "Tooleville, West Virginia", 1),
+  new pet("Cobe","images/boxer.jpeg","boxer",3, "Taiwan", 2),
+  new pet("Jojo","images/golden-retriever.jpeg","Golden Retrieverr",1, "Soudan, Louisiana", 3),
+  new pet("Dudu","images/scottish-terrier.jpeg","Scottish Terrier",10, "Lisco, Alabama", 4)
+];
 App = {
   web3Provider: null,
   contracts: {},
 
   init: async function() {
     // Load pets.
-    $.getJSON('../pets.json', function(data) {
-      var petsRow = $('#petsRow');
-      var petTemplate = $('#petTemplate');
 
-      for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', data[i].picture);
-        petTemplate.find('.pet-breed').text(data[i].breed);
-        petTemplate.find('.pet-age').text(data[i].age);
-        petTemplate.find('.pet-location').text(data[i].location);
-        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+    var petsRow = $('#petsRow');
+    var petTemplate = $('#petTemplate');
 
-        petsRow.append(petTemplate.html());
-      }
-    });
+    for (i = 0; i < pets.length; i ++) {
+      petTemplate.find('.panel-title').text(pets[i].name);
+      petTemplate.find('img').attr('src', pets[i].picture);
+      petTemplate.find('.pet-breed').text(pets[i].breed);
+      petTemplate.find('.pet-age').text(pets[i].age);
+      petTemplate.find('.pet-location').text(pets[i].location);
+      petTemplate.find('.btn-adopt').attr('data-id', pets[i].id);
+
+      petsRow.append(petTemplate.html());
+    }
 
     return await App.initWeb3();
   },
